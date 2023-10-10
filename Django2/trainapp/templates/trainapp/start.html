@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1> {{ title }} </h1>
+<ul>
+    <li><a href="{% url 'start' %}"> Main page </a></li>
+    {% for line in menu %}
+    {% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}
+        <a href="{% url line.url_name %}">{{ line.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for post in posts %}
+    {% if post.is_published %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <p><a href="{% url 'post' post.id  %}">Читать пост</a></p>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>
