@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from datetime import datetime, timedelta
-from .models import Order
+
+# from .models import Order
 
 fake_db = [
     {'id': 1, 'title': 'Анжделина Джоли', 'content': 'Биография Анжделины Джоли', 'is_published': True},
@@ -22,7 +22,7 @@ def start(request):
 
 
 def about(request):
-    data = {'title': 'About us', 'content': 'Here is to be some info about us in the near future'}
+    data = {'title': 'About us', 'menu': menu}
     return render(request, 'trainapp/about.html', context=data)
 
 
@@ -38,22 +38,20 @@ def login(request):
 def post(request, post_id):
     return HttpResponse(f'Пост с id: {post_id}')
 
-
-def order_list(request):
-    today = datetime.now()
-    last_week = today - timedelta(days=7)
-    last_month = today - timedelta(days=30)
-    last_year = today - timedelta(days=365)
-
-    last_7_days = Order.objects.filter(order_date__gte=last_week)
-    last_30_days = Order.objects.filter(order_date__gte=last_month)
-    last_365_days = Order.objects.filter(order_date__gte=last_year)
-
-    context = {
-        'last_7_days': orders_last_7_days,
-        'last_30_days': orders_last_30_days,
-        'last_365_days': orders_last_365_days,
-    }
-
-    return render(request, 'filterorders.html', context)
-
+# def order_list(request):
+#     today = datetime.now()
+#     last_week = today - timedelta(days=7)
+#     last_month = today - timedelta(days=30)
+#     last_year = today - timedelta(days=365)
+#
+#     last_7_days = Order.objects.filter(order_date__gte=last_week)
+#     last_30_days = Order.objects.filter(order_date__gte=last_month)
+#     last_365_days = Order.objects.filter(order_date__gte=last_year)
+#
+#     context = {
+#         'last_7_days': orders_last_7_days,
+#         'last_30_days': orders_last_30_days,
+#         'last_365_days': orders_last_365_days,
+#     }
+#
+#     return render(request, 'filterorders.html', context)
