@@ -12,15 +12,15 @@ class Command(BaseCommand):
         parser.add_argument('author_surname', type=str)
 
     def handle(self, *args, **options):
-        Model1 = apps.get_model('Sem1', 'Article')
-        Model2 = apps.get_model('Sem1', 'Author')
+        model1 = apps.get_model('Sem1', 'Article')
+        model2 = apps.get_model('Sem1', 'Author')
         name = options.get('name')
         body = options.get('body')
         author_name = options.get('author_name')
         author_surname = options.get('author_surname')
-        author = Model2(name=author_name, surname=author_surname)
+        author = model2(name=author_name, surname=author_surname)
         author.save()
-        article = Model1(name=name, body=body, author=author)
+        article = model1(name=name, body=body, author=author)
         article.save()
         self.stdout.write(f'{article}')
 

@@ -10,11 +10,11 @@ class Command(BaseCommand):
         parser.add_argument('name', type=str, help='Enter a name')
 
     def handle(self, *args, **options):
-        Model1 = apps.get_model('Sem1', 'Article')
+        model1 = apps.get_model('Sem1', 'Article')
         pk = options.get('pk')
         name = options.get('name')
-#        article = Model1.objects.filter(pk=pk).first()
-        article = Model1.objects.get(pk=pk)
+#        article = model1.objects.filter(pk=pk).first()
+        article = model1.objects.get(pk=pk)
         article.name = name
         article.save()
         self.stdout.write(f'{article.name}')
