@@ -3181,3 +3181,5 @@ WARNING:django.request:Not Found: /
 INFO:django.utils.autoreload:C:\Django2\Seminars\Sem1\admin.py changed, reloading.
 WARNING:django.request:Not Found: /admin/sem1/Article
 WARNING:django.request:Not Found: /admin/sem1/article
+WARNING:django.request:Not Found: /
+INFO:django.utils.autoreload:C:\Django2\Seminars\Seminars\settings.py changed, reloading.
